@@ -5,13 +5,13 @@ import TodoTask from "./TodoTask";
 
 class Tasks extends React.Component {
     render = () => {
+        let taskElement = this.props.tasks.map( (task) => {
+            return <TodoTask title={task.title} isDone={task.isDone} />
+            });
         return (
 
             <div>
-                <TodoTask title='JS'    isDone={true}/>
-                <TodoTask title='CSS'   isDone={true}/>
-                <TodoTask title='React' isDone={false}/>
-                <TodoTask title='Git'   isDone={true}/>
+                {taskElement}
             </div>
 
 

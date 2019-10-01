@@ -9,7 +9,7 @@ class App extends React.Component {
     tasks = [
         {title:'HTML',  isDone:true, priority:'low'},
         {title:'JS',    isDone:true, priority:'middle'},
-        {title:'React', isDone:true, priority:'high'},
+        {title:'React', isDone:false, priority:'high'},
         {title:'Git',   isDone:true, priority:'high'}
     ];
     render = () => {
