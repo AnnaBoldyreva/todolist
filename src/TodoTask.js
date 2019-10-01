@@ -9,7 +9,7 @@ class TodoTask extends React.Component {
             <div className="todoList-tasks">
                 <div className="todoList-task">
                     <input type="checkbox" checked={this.props.isDone}/>
-                    <span>{this.props.title}</span>
+                    <span>{this.props.title}, priority- {this.props.priority}</span>
                 </div>
             </div>
 

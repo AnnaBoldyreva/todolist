@@ -10,7 +10,7 @@ class App extends React.Component {
         {title:'HTML',  isDone:true, priority:'low'},
         {title:'JS',    isDone:true, priority:'middle'},
         {title:'React', isDone:false, priority:'high'},
-        {title:'Git',   isDone:true, priority:'high'}
+        {title:'Git',   isDone:true,  priority:'high'}
     ];
     render = () => {
         return (
