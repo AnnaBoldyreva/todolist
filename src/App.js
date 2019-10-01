@@ -12,13 +12,15 @@ class App extends React.Component {
         {title:'React', isDone:false, priority:'high'},
         {title:'Git',   isDone:true,  priority:'high'}
     ];
+    filterValue = 'Active';
+
     render = () => {
         return (
             <div className="App">
                 <div className="todoList">
                     <Header />
                     <Tasks tasks={this.tasks} />
-                    <Footer />
+                    <Footer filterValue={this.filterValue} />
 
                 </div>
             </div>
