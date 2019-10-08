@@ -33,8 +33,12 @@ class App extends React.Component {
                 isDone: false,
                 priority: 'low'
             };
+            this.newTaskTitleRef.current.value = '';
+
             let newTasks = [...this.state.tasks, newTask];
             this.setState({tasks: newTasks});
+
+
 
     };
 
