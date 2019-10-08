@@ -11,9 +11,20 @@ class App extends React.Component {
         super(props);
 
         setTimeout(
-            () => ( alert('yo')),2000
+            () => {this.tasks.push({title:'HTML',  isDone:true, priority:'low'})},2000
 
         );
+    };
+
+    state = {
+        tasks : [
+            {title:'HTML',  isDone:true, priority:'low'},
+            {title:'JS',    isDone:true, priority:'middle'},
+            {title:'React', isDone:false, priority:'high'},
+            {title:'Git',   isDone:true,  priority:'high'},
+            {title:'Babel', isDone:false,  priority:'high'}
+        ],
+        filterValue: 'Active'
     };
 
 
