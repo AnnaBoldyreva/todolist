@@ -12,9 +12,14 @@ class App extends React.Component {
 
         setTimeout(
             () => {
-                this.state.tasks.push({title:'Git',  isDone:true, priority:'low'})},2000
-
-        );
+                let newTask = {
+                    title: 'Java',
+                    isDone: false,
+                    priority: 'low'
+                };
+                let newTasks = [...this.state.tasks, newTask];
+                this.setState({tasks: newTasks});
+            }, 2000);
     };
 
     state = {
