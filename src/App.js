@@ -10,16 +10,16 @@ class App extends React.Component {
     constructor(props){
         super(props);
 
-        setTimeout(
-            () => {
-                let newTask = {
-                    title: 'Java',
-                    isDone: false,
-                    priority: 'low'
-                };
-                let newTasks = [...this.state.tasks, newTask];
-                this.setState({tasks: newTasks});
-            }, 2000);
+        // setTimeout(
+        //     () => {
+        //         let newTask = {
+        //             title: 'Java',
+        //             isDone: false,
+        //             priority: 'low'
+        //         };
+        //         let newTasks = [...this.state.tasks, newTask];
+        //         this.setState({tasks: newTasks});
+        //     }, 2000);
     };
 
     state = {
@@ -43,7 +43,15 @@ class App extends React.Component {
                         <h3 className='todoList-header_title'>What to learn</h3>
                         <div className='todoList-newTaskForm'>
                             <input type='text' placeholder='New task name'/>
-                            <button onClick={()=> {alert('yo')}}>Add</button>
+                            <button onClick={()=> {
+                                let newTask = {
+                                    title: 'Java',
+                                    isDone: false,
+                                    priority: 'low'
+                                };
+                                let newTasks = [...this.state.tasks, newTask];
+                                this.setState({tasks: newTasks});
+                            }}>Add</button>
 
                         </div>
                     </div>
