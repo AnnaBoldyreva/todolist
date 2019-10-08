@@ -6,11 +6,17 @@ import Tasks from "./Tasks";
 
 
 class App extends React.Component {
+
+    constructor(props){
+        super(props);
+    }
+
     tasks = [
         {title:'HTML',  isDone:true, priority:'low'},
         {title:'JS',    isDone:true, priority:'middle'},
         {title:'React', isDone:false, priority:'high'},
-        {title:'Git',   isDone:true,  priority:'high'}
+        {title:'Git',   isDone:true,  priority:'high'},
+        {title:'Babel', isDone:false,  priority:'high'}
     ];
     filterValue = 'Active';
 
