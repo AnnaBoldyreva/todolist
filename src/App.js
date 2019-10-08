@@ -9,7 +9,16 @@ class App extends React.Component {
 
     constructor(props){
         super(props);
-    }
+
+        setTimeout(
+            alert('yo'),2000
+
+        );
+    };
+
+
+
+
 
     tasks = [
         {title:'HTML',  isDone:true, priority:'low'},
