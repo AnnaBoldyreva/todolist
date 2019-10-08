@@ -11,7 +11,7 @@ class App extends React.Component {
         super(props);
 
         setTimeout(
-            alert('yo'),2000
+            () => ( alert('yo')),2000
 
         );
     };
