@@ -9,17 +9,8 @@ class App extends React.Component {
 
     constructor(props){
         super(props);
+        this.newTaskTitleRef = React.createRef();
 
-        // setTimeout(
-        //     () => {
-        //         let newTask = {
-        //             title: 'Java',
-        //             isDone: false,
-        //             priority: 'low'
-        //         };
-        //         let newTasks = [...this.state.tasks, newTask];
-        //         this.setState({tasks: newTasks});
-        //     }, 2000);
     };
 
     state = {
@@ -35,8 +26,10 @@ class App extends React.Component {
 
     onAddTaskClick = () => {
 
+            let newText = this.newTaskTitleRef.current.value;
+
             let newTask = {
-                title: 'Java',
+                title: newText,
                 isDone: false,
                 priority: 'low'
             };
@@ -54,7 +47,7 @@ class App extends React.Component {
                     <div className='todoList-header'>
                         <h3 className='todoList-header_title'>What to learn</h3>
                         <div className='todoList-newTaskForm'>
-                            <input type='text' placeholder='New task name'/>
+                            <input ref={this.newTaskTitleRef} type='text' placeholder='New task name'/>
                             <button onClick={this.onAddTaskClick}>Add</button>
 
                         </div>
