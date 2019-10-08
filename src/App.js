@@ -39,7 +39,16 @@ class App extends React.Component {
         return (
             <div className="App">
                 <div className="todoList">
-                    <Header />
+                    <div className='todoList-header'>
+                        <h3 className='todoList-header_title'>What to learn</h3>
+                        <div className='todoList-newTaskForm'>
+                            <input type='text' placeholder='New task name'/>
+                            <button onClick={()=> {alert('yo')}}>Add</button>
+
+                        </div>
+                    </div>
+
+                    {/*<Header />*/}
                     <Tasks tasks={this.state.tasks} />
                     <Footer filterValue={this.state.filterValue} />
 
