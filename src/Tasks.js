@@ -22,4 +22,7 @@ class Tasks extends React.Component {
 
 
 export default Tasks;
+Tasks.propTypes = {
+    tasks: PropTypes.array
+};
 
