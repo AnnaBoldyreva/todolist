@@ -45,13 +45,27 @@ class App extends React.Component {
 
     };
 
+    changeStatus = (task, isDone) =>{
+        let newTasks = this.state.tasks.map( t =>  {
+           if (t !== task){
+               return t;
+           }else {
+               return {...t, isDone: isDone};
+           }
+        });
+        this.setState({
+            tasks: newTasks
+            })
+    };
+
     render = () => {
         return (
             <div className="App">
                 <div className="todoList">
 
                     <Header addTask={this.addTask}/>
-                    <Tasks tasks={this.state.tasks.filter(t => {
+                    <Tasks changeStatus={this.changeStatus}
+                        tasks={this.state.tasks.filter(t => {
                         if (this.state.filterValue === 'All'){
                             return true;
                             }
