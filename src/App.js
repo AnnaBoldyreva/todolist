@@ -10,7 +10,6 @@ class App extends React.Component {
 
     constructor(props){
         super(props);
-        this.newTaskTitleRef = React.createRef();
 
     };
 
@@ -22,50 +21,36 @@ class App extends React.Component {
             {title:'Git',   isDone:true,  priority:'high'},
             {title:'Babel', isDone:false,  priority:'high'}
         ],
-        filterValue: 'Active'
+        filterValue: 'All'
     };
 
-    onAddTaskClick = () => {
 
-            let newText = this.newTaskTitleRef.current.value;
-
-            let newTask = {
-                title: newText,
-                isDone: false,
-                priority: 'low'
-            };
-            this.newTaskTitleRef.current.value = '';
-
-            let newTasks = [...this.state.tasks, newTask];
-            this.setState({tasks: newTasks});
+    addTask = (newText) => {
+        let newTask = {
+            title: newText,
+            isDone: false,
+            priority: 'low'
+        };
 
 
-
+        let newTasks = [...this.state.tasks, newTask];
+        this.setState({tasks: newTasks});
     };
+
 
     changeFilter = (newFilterValue) => {
         this.setState({
-            filterValue : newFilterValue
+            filterValue: newFilterValue
         });
 
     };
-
-
 
     render = () => {
         return (
             <div className="App">
                 <div className="todoList">
-                    <div className='todoList-header'>
-                        <h3 className='todoList-header_title'>What to learn</h3>
-                        <div className='todoList-newTaskForm'>
-                            <input ref={this.newTaskTitleRef} type='text' placeholder='New task name'/>
-                            <button onClick={this.onAddTaskClick}>Add</button>
 
-                        </div>
-                    </div>
-
-                    {/*<Header />*/}
+                    <Header addTask={this.addTask}/>
                     <Tasks tasks={this.state.tasks.filter(t => {
                         if (this.state.filterValue === 'All'){
                             return true;
