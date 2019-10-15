@@ -66,7 +66,18 @@ class App extends React.Component {
                     </div>
 
                     {/*<Header />*/}
-                    <Tasks tasks={this.state.tasks} />
+                    <Tasks tasks={this.state.tasks.filter(t => {
+                        if (this.state.filterValue === 'All'){
+                            return true;
+                            }
+                        if (this.state.filterValue === 'Active'){
+                            return !t.isDone;
+                        }
+                        if (this.state.filterValue === 'Completed'){
+                            return t.isDone;
+                        }}
+
+                    )} />
                     <Footer filterValue={this.state.filterValue} changeFilter={this.changeFilter} />
 
                 </div>
