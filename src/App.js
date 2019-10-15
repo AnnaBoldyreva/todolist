@@ -67,7 +67,7 @@ class App extends React.Component {
 
                     {/*<Header />*/}
                     <Tasks tasks={this.state.tasks} />
-                    <Footer filterValue={this.state.filterValue} />
+                    <Footer filterValue={this.state.filterValue} changeFilter={this.changeFilter} />
 
                 </div>
             </div>

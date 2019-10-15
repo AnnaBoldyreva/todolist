@@ -10,9 +10,9 @@ class Footer extends React.Component {
         return (
 
                     <div className="todoList-footer">
-                        <button className={classForAll}>All</button>
-                        <button className={classForCompleted}>Completed</button>
-                        <button className={classForActive}>Active</button>
+                        <button onClick={this.props.changeFilter} className={classForAll}>All</button>
+                        <button onClick={this.props.changeFilter} className={classForCompleted}>Completed</button>
+                        <button onClick={this.props.changeFilter} className={classForActive}>Active</button>
 
                     </div>
         );
