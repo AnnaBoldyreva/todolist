@@ -3,6 +3,8 @@ import './App.css';
 
 
 class Header extends React.Component {
+
+
     constructor(props) {
         super(props);
         this.newTaskTitleRef = React.createRef();
@@ -10,18 +12,30 @@ class Header extends React.Component {
 
     };
 
+    state = {
+        error : false
+    };
+
+
+
     onAddTaskClick = () => {
         let newText = this.newTaskTitleRef.current.value;
-        this.newTaskTitleRef.current.value = '';
-        this.props.addTask(newText)
+        if (newText === ''){
+            this.setState({error: true});
+        } else {
+            this.setState({error: false});
+            this.newTaskTitleRef.current.value = '';
+            this.props.addTask(newText)
+        }
     };
 
     render = () => {
+        let errorFilter = this.state.error ? 'error': '';
         return (
             <div className='todoList-header'>
                 <h3 className='todoList-header_title'>What to learn</h3>
                 <div className='todoList-newTaskForm'>
-                    <input ref={this.newTaskTitleRef} type='text' placeholder='New task name'/>
+                    <input ref={this.newTaskTitleRef} type='text' placeholder='New task name' className={errorFilter}/>
                     <button onClick={this.onAddTaskClick}>Add</button>
 
                 </div>
