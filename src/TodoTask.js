@@ -10,10 +10,11 @@ class TodoTask extends React.Component {
     };
 
     render = () => {
+        let classForDone = this.props.task.isDone === true ? 'todoList-task done': 'todoList-task';
         return (
 
             <div className="todoList-tasks">
-                <div className="todoList-task">
+                <div className={classForDone}>
                     <input type="checkbox" checked={this.props.task.isDone} onChange={this.onIsDoneChanged}/>
                     <span>{this.props.task.title}, priority- {this.props.task.priority}
                     </span>
