@@ -7,14 +7,31 @@ class Footer extends React.Component {
         isHidden:false
     };
 
-    changeHidden = () => {
-            this.setState({
-                isHidden: true
-            });
-        };
+    onAllFilterClick = () => {
+        this.setState(
+            {changeFilter : this.props.changeFilter('All')})
+    };
+    onCompletedFilterClick = () => {
+        this.setState(
+            {changeFilter : this.props.changeFilter('Completed')})
+    };
+    onActiveFilterClick = () => {
+        this.setState(
+            {changeFilter : this.props.changeFilter('Active')})
+    };
 
-    // onShowFiltersClick = () => {}
-    // onHideFiltersClick = () => {}
+    onShowFiltersClick = () => {
+        this.setState(
+            {isHidden:false})
+    };
+    onHideFiltersClick = () => {
+        this.setState(
+            {isHidden:true})
+    };
+
+// ()=>{this.props.changeFilter('All')}
+// {()=>{this.props.changeFilter('Completed')}}
+// ()=>{this.props.changeFilter('Active')}
 
     render = () => {
         let classForAll = this.props.filterValue === 'All' ? 'filter-active': '';
@@ -23,12 +40,14 @@ class Footer extends React.Component {
         return (
 
                     <div className="todoList-footer">
-                        <button onClick={()=>{this.props.changeFilter('All')}} className={classForAll}>All</button>
-                        <button onClick={()=>{this.props.changeFilter('Completed')}} className={classForCompleted}>Completed</button>
-                        <button onClick={()=>{this.props.changeFilter('Active')}} className={classForActive}>Active</button>
+                        { !this.state.isHidden && <div>
+                        <button onClick={this.onAllFilterClick} className={classForAll}>All</button>
+                        <button onClick={this.onCompletedFilterClick} className={classForCompleted}>Completed</button>
+                        <button onClick={this.onActiveFilterClick} className={classForActive}>Active</button>
+                        </div>}
                        <br/>
-                        { !this.state.isHidden && <span onClick={this.changeHidden}>hide</span>}
-                        { this.state.isHidden && <span onClick={this.changeHidden}>show</span>}
+                        { this.state.isHidden && <span onClick={this.onShowFiltersClick }>show</span>}
+                        { !this.state.isHidden && <span onClick={this.onHideFiltersClick}>hide</span>}
 
 
                     </div>
