@@ -33,6 +33,10 @@ class Header extends React.Component {
         this.setState({error: false})
     };
 
+    onKeyPress = () => {
+       alert('hey')
+    };
+
 
     render = () => {
         let errorFilter = this.state.error ? 'error': '';
@@ -40,7 +44,12 @@ class Header extends React.Component {
             <div className='todoList-header'>
                 <h3 className='todoList-header_title'>What to learn</h3>
                 <div className='todoList-newTaskForm'>
-                    <input ref={this.newTaskTitleRef} type='text' placeholder='New task name' className={errorFilter} onChange={this.onErrorChanged}/>
+                    <input ref={this.newTaskTitleRef}
+                           type='text'
+                           placeholder='New task name'
+                           className={errorFilter}
+                           onChange={this.onErrorChanged}
+                           onKeyPress={this.onKeyPress}/>
                     <button onClick={this.onAddTaskClick}>Add</button>
 
                 </div>
