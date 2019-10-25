@@ -33,8 +33,10 @@ class Header extends React.Component {
         this.setState({error: false})
     };
 
-    onKeyPress = () => {
-       alert('hey')
+    onKeyPress = (e) => {
+       if (e.key === 'Enter'){
+           alert('hey')
+       }
     };
 
 
