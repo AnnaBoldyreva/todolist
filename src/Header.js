@@ -35,7 +35,7 @@ class Header extends React.Component {
 
     onKeyPress = (e) => {
        if (e.key === 'Enter'){
-           alert('hey')
+           this.onAddTaskClick();
        }
     };
 
