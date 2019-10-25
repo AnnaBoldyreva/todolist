@@ -5,32 +5,36 @@ import './App.css';
 class Header extends React.Component {
 
 
-    constructor(props) {
-        super(props);
-        this.newTaskTitleRef = React.createRef();
-
-
-    };
-
     state = {
-        error : false
+        error : false,
+        title : ''
     };
-
-
 
     onAddTaskClick = () => {
-        let newText = this.newTaskTitleRef.current.value;
-        if (newText === ''){
+        let newText = this.state.title;
+        if (newText !== ''){
+            this.props.addTask(newText);
+            this.setState({error: false, title: ''});
+        }else {
             this.setState({error: true});
-        } else {
-            this.setState({error: false});
-            this.newTaskTitleRef.current.value = '';
-            this.props.addTask(newText)
         }
+        // if (newText === ''){
+        //     this.setState({error: true});
+        // } else {
+        //     this.setState({error: false});
+
+
+
     };
 
-    onErrorChanged = () => {
-        this.setState({error: false})
+    // onErrorChanged = () => {
+    //     this.setState({error: false})
+    // };
+
+    onTitleChanged = (e) => {
+        this.setState({
+            title: e.currentTarget.value
+    })
     };
 
     onKeyPress = (e) => {
@@ -46,12 +50,13 @@ class Header extends React.Component {
             <div className='todoList-header'>
                 <h3 className='todoList-header_title'>What to learn</h3>
                 <div className='todoList-newTaskForm'>
-                    <input ref={this.newTaskTitleRef}
+                    <input
                            type='text'
                            placeholder='New task name'
                            className={errorFilter}
-                           onChange={this.onErrorChanged}
-                           onKeyPress={this.onKeyPress}/>
+                           onChange={this.onTitleChanged}
+                           onKeyPress={this.onKeyPress}
+                           value={this.state.title}/>
                     <button onClick={this.onAddTaskClick}>Add</button>
 
                 </div>
