@@ -15,23 +15,25 @@ class App extends React.Component {
 
     state = {
         tasks : [
-            {title:'HTML',  isDone:true, priority:'low'},
-            {title:'JS',    isDone:true, priority:'middle'},
-            {title:'React', isDone:false, priority:'high'},
-            {title:'Git',   isDone:true,  priority:'high'},
-            {title:'Babel', isDone:false,  priority:'high'}
+            {id: 0, title:'HTML',  isDone:true, priority:'low'},
+            {id: 1, title:'JS',    isDone:true, priority:'middle'},
+            {id: 2, title:'React', isDone:false, priority:'high'},
+            {id: 3, title:'Git',   isDone:true,  priority:'high'},
+            {id: 4, title:'Babel', isDone:false,  priority:'high'}
         ],
         filterValue: 'All'
     };
 
+    nextTaskId = 5;
+
     addTask = (newText) => {
         let newTask = {
+            id: this.nextTaskId,
             title: newText,
             isDone: false,
             priority: 'low'
         };
-
-
+        this.nextTaskId++;
         let newTasks = [...this.state.tasks, newTask];
         this.setState({tasks: newTasks});
     };
@@ -43,9 +45,9 @@ class App extends React.Component {
 
     };
 
-    changeStatus = (task, isDone) =>{
+    changeStatus = (taskId, isDone) =>{
         let newTasks = this.state.tasks.map( t =>  {
-           if (t !== task){
+           if (t.id !== taskId){
                return t;
            }else {
                return {...t, isDone: isDone};
