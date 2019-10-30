@@ -8,6 +8,7 @@ class Tasks extends React.Component {
     render = () => {
         let taskElement = this.props.tasks.map( (task) => {
             return <TodoTask   changeStatus={this.props.changeStatus}
+                               changeTitle={this.props.changeTitle}
                                task={task}
             />
             });

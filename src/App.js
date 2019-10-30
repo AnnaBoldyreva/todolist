@@ -58,6 +58,19 @@ class App extends React.Component {
             })
     };
 
+    changeTitle = (taskId, title) => {
+        let newTasks = this.state.tasks.map(t => {
+            if (t.id !== taskId){
+                return t
+            }
+            else {
+                return {...t, title: title}
+            }
+        });
+        this.setState({tasks: newTasks})
+
+    };
+
     render = () => {
         return (
             <div className="App">
@@ -65,6 +78,7 @@ class App extends React.Component {
 
                     <Header addTask={this.addTask}/>
                     <Tasks changeStatus={this.changeStatus}
+                           changeTitle={this.changeTitle}
                         tasks={this.state.tasks.filter(t => {
                         if (this.state.filterValue === 'All'){
                             return true;
