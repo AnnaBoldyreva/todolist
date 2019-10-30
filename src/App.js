@@ -46,29 +46,43 @@ class App extends React.Component {
     };
 
     changeStatus = (taskId, isDone) =>{
-        let newTasks = this.state.tasks.map( t =>  {
-           if (t.id !== taskId){
-               return t;
-           }else {
-               return {...t, isDone: isDone};
-           }
-        });
-        this.setState({
-            tasks: newTasks
-            })
+        this.changeTask(taskId, {isDone:isDone});
+        // let newTasks = this.state.tasks.map( t =>  {
+        //    if (t.id !== taskId){
+        //        return t;
+        //    }else {
+        //        return {...t, isDone: isDone};
+        //    }
+        // });
+        // this.setState({
+        //     tasks: newTasks
+        //     })
     };
 
     changeTitle = (taskId, title) => {
+        this.changeTask(taskId, {title: title})
+        // let newTasks = this.state.tasks.map(t => {
+        //     if (t.id !== taskId){
+        //         return t
+        //     }
+        //     else {
+        //         return {...t, title: title}
+        //     }
+        // });
+        // this.setState({tasks: newTasks})
+
+    };
+
+    changeTask = (taskId, obj) => {
         let newTasks = this.state.tasks.map(t => {
             if (t.id !== taskId){
                 return t
             }
             else {
-                return {...t, title: title}
+                return {...t, ...obj}
             }
         });
         this.setState({tasks: newTasks})
-
     };
 
     render = () => {
