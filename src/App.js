@@ -44,7 +44,11 @@ class App extends React.Component {
       if (stateAsString !== null) {
           state = JSON.parse(stateAsString);
       }
-      this.setState(state)
+      this.setState(state, () => {this.state.tasks.forEach(t=>{
+          if(t.id >= this.nextTaskId){
+              this.nextTaskId = t.id + 1
+          }
+      })});
     };
 
     addTask = (newText) => {
