@@ -18,12 +18,6 @@ class Header extends React.Component {
         }else {
             this.setState({error: true});
         }
-        // if (newText === ''){
-        //     this.setState({error: true});
-        // } else {
-        //     this.setState({error: false});
-
-
 
     };
 

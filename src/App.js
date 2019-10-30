@@ -24,7 +24,6 @@ class App extends React.Component {
         filterValue: 'All'
     };
 
-
     addTask = (newText) => {
         let newTask = {
             title: newText,
@@ -36,7 +35,6 @@ class App extends React.Component {
         let newTasks = [...this.state.tasks, newTask];
         this.setState({tasks: newTasks});
     };
-
 
     changeFilter = (newFilterValue) => {
         this.setState({

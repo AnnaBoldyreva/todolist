@@ -3,6 +3,7 @@ import './App.css';
 
 
 class Footer extends React.Component {
+
     state = {
         isHidden:false
     };
@@ -19,7 +20,6 @@ class Footer extends React.Component {
         this.setState(
             {changeFilter : this.props.changeFilter('Active')})
     };
-
     onShowFiltersClick = () => {
         this.setState(
             {isHidden:false})
@@ -29,9 +29,6 @@ class Footer extends React.Component {
             {isHidden:true})
     };
 
-// ()=>{this.props.changeFilter('All')}
-// {()=>{this.props.changeFilter('Completed')}}
-// ()=>{this.props.changeFilter('Active')}
 
     render = () => {
         let classForAll = this.props.filterValue === 'All' ? 'filter-active': '';
