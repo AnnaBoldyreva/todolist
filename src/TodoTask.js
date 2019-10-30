@@ -4,6 +4,15 @@ import './App.css';
 
 class TodoTask extends React.Component {
 
+    state = {
+      editMode: false
+    };
+
+    activateEditMode = () => {
+        this.setState({editMode: true})
+
+    };
+
     onIsDoneChanged = (e)=> {
 
         this.props.changeStatus( this.props.task.id, e.currentTarget.checked)
@@ -16,8 +25,9 @@ class TodoTask extends React.Component {
             <div className="todoList-tasks">
                 <div className={classForDone}>
                     <input type="checkbox" checked={this.props.task.isDone} onChange={this.onIsDoneChanged}/>
-                    <span>{this.props.task.id} - {this.props.task.title}, priority- {this.props.task.priority}
-                    </span>
+                    {this.state.editMode
+                    ? <input value={this.props.task.title}/>
+                    : <span onClick={this.activateEditMode}>{this.props.task.id} - title: {this.props.task.title}</span>}, priority- {this.props.task.priority}
                 </div>
             </div>
 
