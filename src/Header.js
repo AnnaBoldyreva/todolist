@@ -21,9 +21,6 @@ class Header extends React.Component {
 
     };
 
-    // onErrorChanged = () => {
-    //     this.setState({error: false})
-    // };
 
     onTitleChanged = (e) => {
         this.setState({
