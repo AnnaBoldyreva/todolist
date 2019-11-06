@@ -1,8 +1,9 @@
 import React from 'react';
 import './App.css';
-import Header from "./Header";
+import AddNewItemForm from "./AddNewItemForm";
 import Footer from "./Footer";
 import Tasks from "./Tasks";
+import TodoListTitle from "./TodoListTitle";
 
 
 
@@ -32,7 +33,7 @@ class TodoList extends React.Component {
 
     saveState = () => {
         let stateAsString = JSON.stringify(this.state);
-        localStorage.setItem('our-state' + this.props.id ,stateAsString);
+        localStorage.setItem('our-state-' + this.props.id ,stateAsString);
     };
 
     restoreState = () => {
@@ -40,7 +41,7 @@ class TodoList extends React.Component {
           tasks: [],
           filterValue: 'All'
       };
-      let stateAsString = localStorage.getItem('our-state' + this.props.id );
+      let stateAsString = localStorage.getItem('our-state-' + this.props.id );
       if (stateAsString !== null) {
           state = JSON.parse(stateAsString);
       }
@@ -96,8 +97,10 @@ class TodoList extends React.Component {
         return (
             <div className="App">
                 <div className="todoList">
-
-                    <Header addTask={this.addTask}/>
+                    <div>
+                        <TodoListTitle title={this.props.title}/>
+                        <AddNewItemForm addTask={this.addTask}/>
+                    </div>
                     <Tasks changeStatus={this.changeStatus}
                            changeTitle={this.changeTitle}
                         tasks={this.state.tasks.filter(t => {

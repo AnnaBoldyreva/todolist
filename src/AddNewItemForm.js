@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 
 
-class Header extends React.Component {
+class AddNewItemForm extends React.Component {
 
 
     state = {
@@ -39,7 +39,6 @@ class Header extends React.Component {
         let errorFilter = this.state.error ? 'error': '';
         return (
             <div className='todoList-header'>
-                <h3 className='todoList-header_title'>{this.props.title}</h3>
                 <div className='todoList-newTaskForm'>
                     <input
                            type='text'
@@ -58,5 +57,5 @@ class Header extends React.Component {
 }
 
 
-export default Header;
+export default AddNewItemForm;
 
