@@ -54,7 +54,7 @@ class App extends React.Component {
         const todoLists = this.state.todoLists.map(tl => <TodoList id={tl.id} title={tl.title}/>);
         return (
             <>
-                <div>
+                <div className='itemForm'>
                     <AddNewItemForm addItem={this.addTodoList}/>
                 </div>
 

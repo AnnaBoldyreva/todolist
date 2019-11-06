@@ -3,6 +3,17 @@
   flex-direction: row;
 }
 
+.itemForm{
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.itemForm input{
+  width: 200px ;
+}
+
 .todoList {
   width: 500px;
   margin: 0 auto;
