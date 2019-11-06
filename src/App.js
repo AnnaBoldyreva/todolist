@@ -8,11 +8,7 @@ import AddNewItemForm from "./AddNewItemForm";
 
 class App extends React.Component {
     state = {
-        todoLists: [
-            {id: 1, title: 'First'},
-            {id: 2, title: 'Second'},
-            {id: 3, title: 'third'}
-        ]
+        todoLists: []
     };
 
     nextItemId = 0;
@@ -25,8 +21,34 @@ class App extends React.Component {
         this.nextItemId ++;
         this.setState({
             todoLists: [...this.state.todoLists, newItem]
-        })
+        }, () => {
+            this.saveState()
+        });
     };
+
+    componentDidMount() {
+        this.restoreState();
+    }
+
+    saveState = () => {
+        let stateAsString = JSON.stringify(this.state);
+        localStorage.setItem('todoLists',stateAsString);
+    };
+
+    restoreState = () => {
+
+        let stateAsString = localStorage.getItem('todoLists');
+        if (stateAsString) {
+           let state = JSON.parse(stateAsString);
+           state.todoLists.forEach(t=>{
+               if(t.id >= this.nextItemId){
+               this.nextItemId = t.id +1;
+               }
+           });
+           this.setState(state)
+        }
+    };
+
 
     render = () => {
         const todoLists = this.state.todoLists.map(tl => <TodoList id={tl.id} title={tl.title}/>);
