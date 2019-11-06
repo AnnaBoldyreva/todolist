@@ -99,7 +99,7 @@ class TodoList extends React.Component {
                 <div className="todoList">
                     <div>
                         <TodoListTitle title={this.props.title}/>
-                        <AddNewItemForm addTask={this.addTask}/>
+                        <AddNewItemForm addItem={this.addTask}/>
                     </div>
                     <Tasks changeStatus={this.changeStatus}
                            changeTitle={this.changeTitle}

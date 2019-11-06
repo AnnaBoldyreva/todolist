@@ -10,10 +10,10 @@ class AddNewItemForm extends React.Component {
         title : ''
     };
 
-    onAddTaskClick = () => {
+    onAddItemClick = () => {
         let newText = this.state.title;
         if (newText !== ''){
-            this.props.addTask(newText);
+            this.props.addItem(newText);
             this.setState({error: false, title: ''});
         }else {
             this.setState({error: true});
@@ -30,7 +30,7 @@ class AddNewItemForm extends React.Component {
 
     onKeyPress = (e) => {
        if (e.key === 'Enter'){
-           this.onAddTaskClick();
+           this.onAddItemClick();
        }
     };
 
@@ -42,12 +42,12 @@ class AddNewItemForm extends React.Component {
                 <div className='todoList-newTaskForm'>
                     <input
                            type='text'
-                           placeholder='New task name'
+                           placeholder='New item name'
                            className={errorFilter}
                            onChange={this.onTitleChanged}
                            onKeyPress={this.onKeyPress}
                            value={this.state.title}/>
-                    <button onClick={this.onAddTaskClick}>Add</button>
+                    <button onClick={this.onAddItemClick}>Add</button>
 
                 </div>
             </div>
