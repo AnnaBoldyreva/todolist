@@ -39,7 +39,7 @@ class Header extends React.Component {
         let errorFilter = this.state.error ? 'error': '';
         return (
             <div className='todoList-header'>
-                <h3 className='todoList-header_title'>What to learn</h3>
+                <h3 className='todoList-header_title'>{this.props.title}</h3>
                 <div className='todoList-newTaskForm'>
                     <input
                            type='text'
