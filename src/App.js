@@ -15,8 +15,17 @@ class App extends React.Component {
         ]
     };
 
+    nextItemId = 0;
+
     addTodoList = (title) => {
-        alert(title)
+        let newItem = {
+            title: title,
+            id: this.nextItemId
+        };
+        this.nextItemId ++;
+        this.setState({
+            todoLists: [...this.state.todoLists, newItem]
+        })
     };
 
     render = () => {
