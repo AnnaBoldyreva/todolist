@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import TodoList from "./TodoList";
 import AddNewItemForm from "./AddNewItemForm";
+import {connect} from "react-redux";
 
 
 
@@ -51,7 +52,7 @@ class App extends React.Component {
 
 
     render = () => {
-        const todoLists = this.state.todoLists.map(tl => <TodoList id={tl.id} title={tl.title}/>);
+        const todoLists = this.props.todolists.map(tl => <TodoList id={tl.id} title={tl.title}/>);
         return (
             <>
                 <div className='itemForm'>
@@ -66,5 +67,15 @@ class App extends React.Component {
     }
 }
 
-export default App;
+
+const mapStateToProps = (state) => {
+    return {
+        todolists: state.todolists
+    }
+};
+
+export default connect(mapStateToProps)(App);
+
+
+
 

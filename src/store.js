@@ -2,7 +2,7 @@ import {createStore} from "redux";
 
 
 const initialState = {
-    todoLists: []
+    todolists: []
 };
 
 const reducer = (state = initialState, action) => {
