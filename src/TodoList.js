@@ -4,6 +4,7 @@ import AddNewItemForm from "./AddNewItemForm";
 import Footer from "./Footer";
 import Tasks from "./Tasks";
 import TodoListTitle from "./TodoListTitle";
+import {connect} from "react-redux";
 
 
 
@@ -60,10 +61,7 @@ class TodoList extends React.Component {
             priority: 'low'
         };
         this.nextTaskId++;
-        let newTasks = [...this.state.tasks, newTask];
-        this.setState({tasks: newTasks},
-            () => {this.saveState();});
-
+        this.props.addTask(newTask,this.props.id)
     };
 
     changeFilter = (newFilterValue) => {
@@ -123,5 +121,17 @@ class TodoList extends React.Component {
     }
 }
 
-export default TodoList;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addTask(newTask,todolistId){
+            const action = {type: 'ADD-TASK',
+                newTask: newTask,
+                todolistId: todolistId};
+            dispatch(action)
+        }
+    }
+};
+
+
+export default connect(null,mapDispatchToProps)(TodoList);
 

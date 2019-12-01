@@ -15,6 +15,17 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 todolists: [...state.todolists, action.newTodolist]
+            };
+        case 'ADD-TASK':
+            return {
+                ...state,
+                todolists: state.todolists.map((tl)=> {
+                    if (tl.id === action.todolistId){
+                        return {...tl,tasks: [...tl.tasks,action.newTask]}
+                    } else {
+                        return tl
+                    }
+                })
             }
     }
     return state;
