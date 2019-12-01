@@ -48,7 +48,7 @@ class App extends React.Component {
 
 
     render = () => {
-        const todoLists = this.props.todolists.map(tl => <TodoList id={tl.id} title={tl.title}/>);
+        const todoLists = this.props.todolists.map(tl => <TodoList id={tl.id} title={tl.title} tasks={tl.tasks}/>);
         return (
             <>
                 <div className='itemForm'>

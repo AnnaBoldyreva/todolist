@@ -103,7 +103,7 @@ class TodoList extends React.Component {
                     </div>
                     <Tasks changeStatus={this.changeStatus}
                            changeTitle={this.changeTitle}
-                        tasks={this.state.tasks.filter(t => {
+                        tasks={this.props.tasks.filter(t => {
                         if (this.state.filterValue === 'All'){
                             return true;
                             }
